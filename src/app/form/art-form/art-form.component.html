@@ -4,13 +4,33 @@
       <label for="firstName">First Name</label>
       <input type="text" class="form-control" id="firstName" placeholder="First Name" formControlName="firstName">
     </div>
+    <div *ngIf="firstname.touched && firstname.errors">
+      <div class="alert alert-danger" *ngIf="firstname.errors.required">
+         First name is required
+      </div>
+    </div>
     <div class="form-group row">
       <label for="lastName">Last Name</label>
       <input type="text" class="form-control" id="lastName" placeholder="Last Name" formControlName="lastName">
     </div>
+    <div *ngIf="lastname.touched && lastname.errors">
+      <div class="alert alert-danger" *ngIf="lastname.errors.required">
+         Last name is required
+      </div>
+    </div>
     <div class="form-group row">
       <label for="email">Email</label>
       <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
+    </div>
+    <div *ngIf="email.touched && email.errors">
+      <div class="alert alert-danger" *ngIf="email.errors.required">
+         Email is required
+      </div>
+    </div>
+    <div *ngIf="email.errors">
+      <div class="alert alert-danger" *ngIf="email.errors.pattern">
+          Email is not valid
+      </div>
     </div>
     <div class="form-group row">
       <label for="congregation">Congregation</label>
@@ -19,6 +39,11 @@
     <div class="form-group row">
       <label for="file1">Upload File 1</label>
       <input type="file" class="form-control-file" id="file1" placeholder="Upload File 1" formControlName="file1">
+    </div>
+    <div *ngIf="file1.errors?.required">
+      <div class="alert alert-danger" *ngIf="file1.errors.required">
+         At least one image is required
+      </div>
     </div>
     <div class="form-group row">
       <label for="file2">Upload File </label>
@@ -33,7 +58,7 @@
       <input type="file" class="form-control-file" id="file4" placeholder="Upload File 4" formControlName="file4">
     </div>
     
-    <button type="submit" [disabled]="form.invalid || loading" class="btn btn-success">Submit<i class="fa fa-spinner fa-spin fa-fw btn btn-primary" *ngIf="loading"></i></button>
+    <button type="submit" [disabled]="form.invalid || loading" class="btn btn-primary">Submit<i class="fa fa-spinner fa-spin fa-fw btn btn-primary" *ngIf="loading"></i></button>
   </form>
 </div>
 
